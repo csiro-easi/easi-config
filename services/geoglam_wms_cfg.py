@@ -228,7 +228,7 @@ layer_cfg = [
                 # extents for the product.
                 # Defaults to zero, which is interpreted as no dataset limit.
                 # 6 seems to work with a min_zoom_factor of 500.0 for "old-style" Net-CDF albers tiled data.
-                "max_datasets_wms": 6,
+                "max_datasets_wms": 12,
                 # max_datasets_wcs is the WCS equivalent of max_datasets_wms.  The main requirement for setting this
                 # value is to avoid gateway timeouts on overly large WCS requests (and reduce server load).
                 "max_datasets_wcs": 16,
