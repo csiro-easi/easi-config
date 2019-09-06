@@ -345,189 +345,189 @@ layer_cfg = [
                         # Band values outside this range are clipped to 0 or 255 as appropriate.
                         "scale_range": [0.0, 111.0]
                     },
-                    {
-                        "name": "bare_soil",
-                        "title": "Bare Soil",
-                        "abstract": "Bare Soil",
-                        "legend": {
-                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/bare_Vegetation_cover.png",
-                            },
-                        "color_ramp": [
-                            {
-                                "value": -0.0,
-                                "color": "#FFF5F0",
-                                "alpha": 0.0,
-                            },
-                            {
-                                "value": 0.0,
-                                "color": "#FFF5F0",
-                                "alpha": 1.0,
-                            },
-                            {
-                                "value": 10.0,
-                                "color": "#FFF5F0",
-                            },
-                            {
-                                "value": 20.0,
-                                "color": "#FEE1D4",
-                            },
-                            {
-                                "value": 30.0,
-                                "color": "#FCC1A9",
-                            },
-                            {
-                                "value": 40.0,
-                                "color": "#FC9C7E",
-                            },
-                            {
-                                "value": 50.0,
-                                "color": "#FB7757",
-                            },
-                            {
-                                "value": 60.0,
-                                "color": "#F44F38",
-                            },
-                            {
-                                "value": 70.0,
-                                "color": "#DE2B25",
-                            },
-                            {
-                                "value": 80.0,
-                                "color": "#BD141A",
-                            },
-                            {
-                                "value": 90.0,
-                                "color": "#980B13",
-                            },
-                            {
-                                "value": 100.0,
-                                "color": "#67000D",
-                            }
-                        ],
-                        "scale_range": [0.0, 111.0]
-                    },
-                    {
-                        "name": "phot_veg",
-                        "title": "Photosynthetic Vegetation",
-                        "abstract": "Photosyntehtic Vegetation",
-                        "legend": {
-                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/green_Vegetation_cover.png",
-                            },
-                        "color_ramp": [
-                            {
-                                "value": -0.0,
-                                "color": "#F7FCFD",
-                                "alpha": 0.0,
-                            },
-                            {
-                                "value": 0.0,
-                                "color": "#F7FCFD",
-                                "alpha": 1.0,
-                            },
-                            {
-                                "value": 10.0,
-                                "color": "#F7FCFD",
-                            },
-                            {
-                                "value": 20.0,
-                                "color": "#E6F5F9",
-                            },
-                            {
-                                "value": 30.0,
-                                "color": "#D0EDE9",
-                            },
-                            {
-                                "value": 40.0,
-                                "color": "#A6DDD0",
-                            },
-                            {
-                                "value": 50.0,
-                                "color": "#77C9B0",
-                            },
-                            {
-                                "value": 60.0,
-                                "color": "#50B689",
-                            },
-                            {
-                                "value": 70.0,
-                                "color": "#339E5F",
-                            },
-                            {
-                                "value": 80.0,
-                                "color": "#16803B",
-                            },
-                            {
-                                "value": 90.0,
-                                "color": "#006428",
-                            },
-                            {
-                                "value": 100.0,
-                                "color": "#00441B",
-                            }
-                        ],
-                        "scale_range": [0.0, 110.0]
-                    },
-                    {
-                        "name": "nphot_veg",
-                        "title": "Non-photosynthetic vegetation",
-                        "abstract": "Non-photosynthetic vegetation",
-                        "legend": {
-                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/nongreen_Vegetation_cover.png",
-                            },
-                        "color_ramp": [
-                            {
-                                "value": -0.0,
-                                "color": "#F7FBFF",
-                                "alpha": 0.0,
-                            },
-                            {
-                                "value": 0.0,
-                                "color": "#F7FBFF",
-                                "alpha": 1.0,
-                            },
-                            {
-                                "value": 10.0,
-                                "color": "#F7FBFF",
-                            },
-                            {
-                                "value": 20.0,
-                                "color": "#E0ECF7",
-                            },
-                            {
-                                "value": 30.0,
-                                "color": "#CADDF0",
-                            },
-                            {
-                                "value": 40.0,
-                                "color": "#A8CEE4",
-                            },
-                            {
-                                "value": 50.0,
-                                "color": "#7CB7D9",
-                            },
-                            {
-                                "value": 60.0,
-                                "color": "#539ECC",
-                            },
-                            {
-                                "value": 70.0,
-                                "color": "#3383BE",
-                            },
-                            {
-                                "value": 80.0,
-                                "color": "#1765AB",
-                            },
-                            {
-                                "value": 90.0,
-                                "color": "#084A91",
-                            },
-                            {
-                                "value": 100.0,
-                                "color": "#08306B",
-                            }
-                        ],
-                        "scale_range": [0.0, 111.0]
-                    },
+                    # {
+                    #     "name": "bare_soil",
+                    #     "title": "Bare Soil",
+                    #     "abstract": "Bare Soil",
+                    #     "legend": {
+                    #         "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/bare_Vegetation_cover.png",
+                    #         },
+                    #     "color_ramp": [
+                    #         {
+                    #             "value": -0.0,
+                    #             "color": "#FFF5F0",
+                    #             "alpha": 0.0,
+                    #         },
+                    #         {
+                    #             "value": 0.0,
+                    #             "color": "#FFF5F0",
+                    #             "alpha": 1.0,
+                    #         },
+                    #         {
+                    #             "value": 10.0,
+                    #             "color": "#FFF5F0",
+                    #         },
+                    #         {
+                    #             "value": 20.0,
+                    #             "color": "#FEE1D4",
+                    #         },
+                    #         {
+                    #             "value": 30.0,
+                    #             "color": "#FCC1A9",
+                    #         },
+                    #         {
+                    #             "value": 40.0,
+                    #             "color": "#FC9C7E",
+                    #         },
+                    #         {
+                    #             "value": 50.0,
+                    #             "color": "#FB7757",
+                    #         },
+                    #         {
+                    #             "value": 60.0,
+                    #             "color": "#F44F38",
+                    #         },
+                    #         {
+                    #             "value": 70.0,
+                    #             "color": "#DE2B25",
+                    #         },
+                    #         {
+                    #             "value": 80.0,
+                    #             "color": "#BD141A",
+                    #         },
+                    #         {
+                    #             "value": 90.0,
+                    #             "color": "#980B13",
+                    #         },
+                    #         {
+                    #             "value": 100.0,
+                    #             "color": "#67000D",
+                    #         }
+                    #     ],
+                    #     "scale_range": [0.0, 111.0]
+                    # },
+                    # {
+                    #     "name": "phot_veg",
+                    #     "title": "Photosynthetic Vegetation",
+                    #     "abstract": "Photosyntehtic Vegetation",
+                    #     "legend": {
+                    #         "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/green_Vegetation_cover.png",
+                    #         },
+                    #     "color_ramp": [
+                    #         {
+                    #             "value": -0.0,
+                    #             "color": "#F7FCFD",
+                    #             "alpha": 0.0,
+                    #         },
+                    #         {
+                    #             "value": 0.0,
+                    #             "color": "#F7FCFD",
+                    #             "alpha": 1.0,
+                    #         },
+                    #         {
+                    #             "value": 10.0,
+                    #             "color": "#F7FCFD",
+                    #         },
+                    #         {
+                    #             "value": 20.0,
+                    #             "color": "#E6F5F9",
+                    #         },
+                    #         {
+                    #             "value": 30.0,
+                    #             "color": "#D0EDE9",
+                    #         },
+                    #         {
+                    #             "value": 40.0,
+                    #             "color": "#A6DDD0",
+                    #         },
+                    #         {
+                    #             "value": 50.0,
+                    #             "color": "#77C9B0",
+                    #         },
+                    #         {
+                    #             "value": 60.0,
+                    #             "color": "#50B689",
+                    #         },
+                    #         {
+                    #             "value": 70.0,
+                    #             "color": "#339E5F",
+                    #         },
+                    #         {
+                    #             "value": 80.0,
+                    #             "color": "#16803B",
+                    #         },
+                    #         {
+                    #             "value": 90.0,
+                    #             "color": "#006428",
+                    #         },
+                    #         {
+                    #             "value": 100.0,
+                    #             "color": "#00441B",
+                    #         }
+                    #     ],
+                    #     "scale_range": [0.0, 110.0]
+                    # },
+                    # {
+                    #     "name": "nphot_veg",
+                    #     "title": "Non-photosynthetic vegetation",
+                    #     "abstract": "Non-photosynthetic vegetation",
+                    #     "legend": {
+                    #         "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/nongreen_Vegetation_cover.png",
+                    #         },
+                    #     "color_ramp": [
+                    #         {
+                    #             "value": -0.0,
+                    #             "color": "#F7FBFF",
+                    #             "alpha": 0.0,
+                    #         },
+                    #         {
+                    #             "value": 0.0,
+                    #             "color": "#F7FBFF",
+                    #             "alpha": 1.0,
+                    #         },
+                    #         {
+                    #             "value": 10.0,
+                    #             "color": "#F7FBFF",
+                    #         },
+                    #         {
+                    #             "value": 20.0,
+                    #             "color": "#E0ECF7",
+                    #         },
+                    #         {
+                    #             "value": 30.0,
+                    #             "color": "#CADDF0",
+                    #         },
+                    #         {
+                    #             "value": 40.0,
+                    #             "color": "#A8CEE4",
+                    #         },
+                    #         {
+                    #             "value": 50.0,
+                    #             "color": "#7CB7D9",
+                    #         },
+                    #         {
+                    #             "value": 60.0,
+                    #             "color": "#539ECC",
+                    #         },
+                    #         {
+                    #             "value": 70.0,
+                    #             "color": "#3383BE",
+                    #         },
+                    #         {
+                    #             "value": 80.0,
+                    #             "color": "#1765AB",
+                    #         },
+                    #         {
+                    #             "value": 90.0,
+                    #             "color": "#084A91",
+                    #         },
+                    #         {
+                    #             "value": 100.0,
+                    #             "color": "#08306B",
+                    #         }
+                    #     ],
+                    #     "scale_range": [0.0, 111.0]
+                    # },
                     {
                         "name": "tot_cover",
                         "title": "Total Cover",
