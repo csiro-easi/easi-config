@@ -1,7 +1,7 @@
 # EASI Hub Config
 Config files for EASI Hub datacube and associated applications
 
-[![Build Status](https://travis-ci.org/csiro-easi/config.svg?branch=master)](https://travis-ci.org/csiro-easi/config)
+[![Build Status](https://travis-ci.org/csiro-easi/easi-config.svg?branch=master)](https://travis-ci.org/csiro-easi/easi-config)
 
 Changes to this repo will generate a new docker image that includes the config files, 
 
