@@ -181,7 +181,7 @@ layer_cfg = [
         "products": [
             {
                 # Included as a keyword  for the layer
-                "label": "frac_cover",
+                "label": "frac_cover_monthly",
                 # Included as a keyword  for the layer
                 "type": "fractional cover",
                 # Included as a keyword  for the layer
@@ -213,7 +213,7 @@ layer_cfg = [
                 },
                 # Min zoom factor - sets the zoom level where the cutover from indicative polygons
                 # to actual imagery occurs.
-                "min_zoom_factor": 20.0,
+                "min_zoom_factor": 15.0,
                 # Min zoom factor (above) works well for small-tiled requests, (e.g. 256x256 as sent by Terria).
                 # However, for large-tiled requests (e.g. as sent by QGIS), large and intensive queries can still
                 # go through to the datacube.
@@ -324,7 +324,7 @@ layer_cfg = [
                     {
                         "name": "simple_rgb",
                         "title": "Simple RGB",
-                        "abstract": "Simple true-colour image, using the red, green and blue bands",
+                        "abstract": "Simple true-colour image using bare soil, photo and non photo synthetic vegetatation as RGB",
                         "components": {
                             # The component keys MUST be "red", "green" and "blue" (and optionally "alpha")
                             "red": {
@@ -338,60 +338,270 @@ layer_cfg = [
                                 "nphot_veg": 1.0
                             }
                         },
+                        "legend": {
+                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/rgb_geoglam.png",
+                            },
                         # The raw band value range to be compressed to an 8 bit range for the output image tiles.
                         # Band values outside this range are clipped to 0 or 255 as appropriate.
-                        "scale_range": [0.0, 254.0]
+                        "scale_range": [0.0, 111.0]
                     },
                     {
                         "name": "bare_soil",
                         "title": "Bare Soil",
                         "abstract": "Bare Soil",
-                        "components": {
-                            "red": {
-                                "bare_soil": 1.0
+                        "legend": {
+                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/bare_Vegetation_cover.png",
                             },
-                            "green": {
-                                "bare_soil": 1.0
+                        "color_ramp": [
+                            {
+                                "value": -0.0,
+                                "color": "#FFF5F0",
+                                "alpha": 0.0,
                             },
-                            "blue": {
-                                "bare_soil": 1.0
+                            {
+                                "value": 0.0,
+                                "color": "#FFF5F0",
+                                "alpha": 1.0,
+                            },
+                            {
+                                "value": 10.0,
+                                "color": "#FFF5F0",
+                            },
+                            {
+                                "value": 20.0,
+                                "color": "#FEE1D4",
+                            },
+                            {
+                                "value": 30.0,
+                                "color": "#FCC1A9",
+                            },
+                            {
+                                "value": 40.0,
+                                "color": "#FC9C7E",
+                            },
+                            {
+                                "value": 50.0,
+                                "color": "#FB7757",
+                            },
+                            {
+                                "value": 60.0,
+                                "color": "#F44F38",
+                            },
+                            {
+                                "value": 70.0,
+                                "color": "#DE2B25",
+                            },
+                            {
+                                "value": 80.0,
+                                "color": "#BD141A",
+                            },
+                            {
+                                "value": 90.0,
+                                "color": "#980B13",
+                            },
+                            {
+                                "value": 100.0,
+                                "color": "#67000D",
                             }
-                        },
-                        "scale_range": [0.0, 254.0]
+                        ],
+                        "scale_range": [0.0, 111.0]
                     },
                     {
                         "name": "phot_veg",
                         "title": "Photosynthetic Vegetation",
                         "abstract": "Photosyntehtic Vegetation",
-                        "components": {
-                            "red": {
-                                "phot_veg": 1.0
+                        "legend": {
+                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/green_Vegetation_cover.png",
                             },
-                            "green": {
-                                "phot_veg": 1.0
+                        "color_ramp": [
+                            {
+                                "value": -0.0,
+                                "color": "#F7FCFD",
+                                "alpha": 0.0,
                             },
-                            "blue": {
-                                "phot_veg": 1.0
+                            {
+                                "value": 0.0,
+                                "color": "#F7FCFD",
+                                "alpha": 1.0,
+                            },
+                            {
+                                "value": 10.0,
+                                "color": "#F7FCFD",
+                            },
+                            {
+                                "value": 20.0,
+                                "color": "#E6F5F9",
+                            },
+                            {
+                                "value": 30.0,
+                                "color": "#D0EDE9",
+                            },
+                            {
+                                "value": 40.0,
+                                "color": "#A6DDD0",
+                            },
+                            {
+                                "value": 50.0,
+                                "color": "#77C9B0",
+                            },
+                            {
+                                "value": 60.0,
+                                "color": "#50B689",
+                            },
+                            {
+                                "value": 70.0,
+                                "color": "#339E5F",
+                            },
+                            {
+                                "value": 80.0,
+                                "color": "#16803B",
+                            },
+                            {
+                                "value": 90.0,
+                                "color": "#006428",
+                            },
+                            {
+                                "value": 100.0,
+                                "color": "#00441B",
                             }
-                        },
-                        "scale_range": [0.0, 254.0]
+                        ],
+                        "scale_range": [0.0, 110.0]
                     },
                     {
                         "name": "nphot_veg",
                         "title": "Non-photosynthetic vegetation",
                         "abstract": "Non-photosynthetic vegetation",
-                        "components": {
-                            "red": {
-                                "nphot_veg": 1.0
+                        "legend": {
+                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/nongreen_Vegetation_cover.png",
                             },
-                            "green": {
-                                "nphot_veg": 1.0
+                        "color_ramp": [
+                            {
+                                "value": -0.0,
+                                "color": "#F7FBFF",
+                                "alpha": 0.0,
                             },
-                            "blue": {
-                                "nphot_veg": 1.0
+                            {
+                                "value": 0.0,
+                                "color": "#F7FBFF",
+                                "alpha": 1.0,
+                            },
+                            {
+                                "value": 10.0,
+                                "color": "#F7FBFF",
+                            },
+                            {
+                                "value": 20.0,
+                                "color": "#E0ECF7",
+                            },
+                            {
+                                "value": 30.0,
+                                "color": "#CADDF0",
+                            },
+                            {
+                                "value": 40.0,
+                                "color": "#A8CEE4",
+                            },
+                            {
+                                "value": 50.0,
+                                "color": "#7CB7D9",
+                            },
+                            {
+                                "value": 60.0,
+                                "color": "#539ECC",
+                            },
+                            {
+                                "value": 70.0,
+                                "color": "#3383BE",
+                            },
+                            {
+                                "value": 80.0,
+                                "color": "#1765AB",
+                            },
+                            {
+                                "value": 90.0,
+                                "color": "#084A91",
+                            },
+                            {
+                                "value": 100.0,
+                                "color": "#08306B",
                             }
+                        ],
+                        "scale_range": [0.0, 111.0]
+                    },
+                    {
+                        "name": "tot_cover",
+                        "title": "Total Cover",
+                        "abstract": "This layer is created after combining with photo synthetic vegetation and non synthetic vegetation",
+                        "legend": {
+                            "url": "http://www-data.wron.csiro.au/remotesensing/MODIS/products/public/misc/Total_Vegetation_cover.png",
+                            },
+                        "index_function": {
+                            "function": lambda data: data["phot_veg"] + data["nphot_veg"],
                         },
-                        "scale_range": [0.0, 254.0]
+                        "needed_bands": ["phot_veg","nphot_veg"],
+                        "color_ramp": [
+                            # Any value less than the first entry will have colour and alpha of the first entry.
+                            # (i.e. in this example all negative values will be fully transparent (alpha=0.0).)
+                            {
+                                "value": -0.0,
+                                "color": "#543005",
+                                "alpha": 0.0,
+                            },
+                            {
+                                "value": 0.0,
+                                "color": "#543005",
+                                "alpha": 1.0,
+                            },
+                            {
+                                "value": 10.0,
+                                "color": "#543005",
+                            },
+                            {
+                                "value": 20.0,
+                                "color": "#91560E",
+                            },
+                            {
+                                "value": 30.0,
+                                "color": "#C6903F",
+                            },
+                            {
+                                "value": 40.0,
+                                "color": "#E7CF95",
+                            },
+                            {
+                                "value": 50.0,
+                                "color": "#F5EEDA",
+                            },
+                            {
+                                "value": 60.0,
+                                "color": "#DAEEEB",
+                            },
+                            {
+                                "value": 70.0,
+                                "color": "#98D6CD",
+                            },
+                            {
+                                "value": 80.0,
+                                "color": "#45A39A",
+                            },
+                            {
+                                "value": 90.0,
+                                "color": "#0A6F67",
+                            },
+                            {
+                                "value": 100.0,
+                                "color": "#004035",
+                            },
+                            # Values greater than the last entry will use the colour and alpha of the last entry.
+                            # (N.B. This will not happen for this example because it is normalised so that 1.0 is
+                            # maximum possible value.)
+                            {
+                                "value": 111.0,
+                                "color": "#004035",
+                                "alpha" : 0.0
+                            }
+                        ],
+                        "scale_range": [0.0, 110.0]
                     },
                     {
                         "name": "tot_cover",
