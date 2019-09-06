@@ -603,65 +603,6 @@ layer_cfg = [
                         ],
                         "scale_range": [0.0, 110.0]
                     },
-                    {
-                        "name": "tot_cover",
-                        "title": "Total Cover",
-                        "abstract": "Total Cover abstract",
-                        "index_function": {
-                            "function": lambda data: data["phot_veg"] + data["nphot_veg"],
-                        },
-                        "needed_bands": ["phot_veg","nphot_veg"],
-                        "color_ramp": [
-                            # Any value less than the first entry will have colour and alpha of the first entry.
-                            # (i.e. in this example all negative values will be fully transparent (alpha=0.0).)
-                            {
-                                "value": -0.0,
-                                "color": "#8C510A",
-                                "alpha": 0.0,
-                            },
-                            {
-                                "value": 0.0,
-                                "color": "#8C510A",
-                                "alpha": 1.0,
-                            },
-                            {
-                                "value": 30.0,
-                                "color": "#8C510A",
-                            },
-                            {
-                                "value": 31.0,
-                                "color": "#DFC27D",
-                            },
-                            {
-                                "value": 50.0,
-                                "color": "#DFC27D",
-                            },
-                            {
-                                "value": 51.0,
-                                "color": "#80CDC1",
-                            },
-                            {
-                                "value": 70.0,
-                                "color": "#80CDC1",
-                            },
-                            {
-                                "value": 71.0,
-                                "color": "#01665E",
-                            },
-                            {
-                                "value": 110.0,
-                                "color": "#01665E",
-                            },
-                            # Values greater than the last entry will use the colour and alpha of the last entry.
-                            # (N.B. This will not happen for this example because it is normalised so that 1.0 is
-                            # maximum possible value.)
-                            {
-                                "value": 111.0,
-                                "color": "#01655E",
-                                "alpha" : 0.0
-                            },
-                        ],
-                    },
                 ],
                 # Default style (if request does not specify style)
                 # MUST be defined in the styles list above.
