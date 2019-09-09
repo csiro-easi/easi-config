@@ -273,6 +273,9 @@ layer_cfg = [
                 # Flags listed here are ignored in GetFeatureInfo requests.
                 # (defaults to empty list)
                 "ignore_info_flags": [],
+                "legend": {
+                    "styles": ["simple_rgb", "bare_soil", "phot_veg", "nphot_veg", "tot_cover"]
+                }, 
                 # Include an additional list of utc dates in the WMS Get Feature Info
                 # HACK: only used for GSKY non-solar day lookup
                 "feature_info_include_utc_dates": False,
