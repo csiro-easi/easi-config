@@ -24,7 +24,7 @@ service_cfg = {
     "title": "GEOGLAM WMS",
     # Service URL.  Should a fully qualified URL or a list of fully qualified URLs that the service can return
     # in the GetCapabilities document based on the requesting url
-    "url": [ "http://ows.easi-eo.solutions/" ],
+    "url": [ "https://ows.easi-eo.solutions/" ],
     # URL that humans can visit to learn more about the WMS or organization
     # should be fully qualified
     "human_url": "http://csiro.au",
