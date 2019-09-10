@@ -720,8 +720,8 @@ layer_cfg = [
                         ],
                         "scale_range": [0.0, 110.0]
                     },
-                ]
-                "default_style": "tot_cover",   
+                ],
+                "default_style": "tot_cover"   
             }
         ],
     },
