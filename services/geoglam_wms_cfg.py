@@ -24,7 +24,7 @@ service_cfg = {
     "title": "GEOGLAM WMS",
     # Service URL.  Should a fully qualified URL or a list of fully qualified URLs that the service can return
     # in the GetCapabilities document based on the requesting url
-    "url": [ "http://ows.easi-eo.solutions/" ],
+    "url": [ "https://ows.easi-eo.solutions/" ],
     # URL that humans can visit to learn more about the WMS or organization
     # should be fully qualified
     "human_url": "http://csiro.au",
@@ -151,7 +151,12 @@ layer_cfg = [
         # Platform layers are not mappable. The name is for internal server use only.
         "name": "FRACTIONAL_COVER",
         "title": "Fractional Cover",
-        "abstract": "Fractional cover products derived from MODIS data",
+        "abstract": """ MODIS, CSIRO Land and Water algorithm, Global coverage. Monthly - Vegetation Fractional Cover represents the exposed proportion of Photosynthetic Vegetation (PV),
+         Non-Photosynthetic Vegetation (NPV) and Bare Soil (BS) within each pixel. The sum of the three fractions is 100% (+/- 3%) and shown in Red/Green/Blue colors. 
+         In forested canopies the photosynthetic or non-photosynthetic portions of trees may obscure those of the grass layer and/or bare soil. This product is derived from
+         the MODIS Nadir BRDF-Adjusted Reflectance product (MCD43A4) collection 6 and has 500 meters spatial resolution. The monthly product is aggregated from the 8-day
+         composites using the medoid method. Access to the data is available in http://dapds00.nci.org.au/thredds/catalog/tc43/modis-fc/v310/tiles/catalog.html. 
+         The following publications provide details of the product: http://dx.doi.org/10.1016/j.rse.2015.01.021, http://doi.org/10.1080/2150704X.2018.1465611 and https://doi.org/10.25919/5bf84026e556d""",
 
         # Attribution.  This entire section is optional.  If provided, it overrides any
         #               attribution defined in the service_cfg for all layers under this
@@ -185,7 +190,7 @@ layer_cfg = [
                 # Included as a keyword  for the layer
                 "type": "fractional cover",
                 # Included as a keyword  for the layer
-                "variant": "three band",
+                "variant": "three bands",
                 # The WMS name for the layer
                 "name": "frac_cover",
                 # The Datacube name for the associated data product
@@ -213,7 +218,7 @@ layer_cfg = [
                 },
                 # Min zoom factor - sets the zoom level where the cutover from indicative polygons
                 # to actual imagery occurs.
-                "min_zoom_factor": 15.0,
+                "min_zoom_factor": 1.0,
                 # Min zoom factor (above) works well for small-tiled requests, (e.g. 256x256 as sent by Terria).
                 # However, for large-tiled requests (e.g. as sent by QGIS), large and intensive queries can still
                 # go through to the datacube.
@@ -257,7 +262,7 @@ layer_cfg = [
                 # The function is assumed to take two arguments, data (an xarray Dataset) and band (a band name).  (Plus any additional
                 # arguments required by the args and kwargs values in format 3, possibly including product_cfg.)
                 #
-                "extent_mask_func": "datacube_wms.ogc_utils.mask_by_val",
+                "extent_mask_func": lambda data, band: data[band] != data[band].attrs['nodata'], 
                 # Fuse func
                 # Determines how multiple dataset arrays are compressed into a single time array
                 # All the formats described above for "extent_mask_func" are supported here as well.
@@ -274,7 +279,7 @@ layer_cfg = [
                 # (defaults to empty list)
                 "ignore_info_flags": [],
                 "legend": {
-                    "styles": ["simple_rgb", "bare_soil", "phot_veg", "nphot_veg", "tot_cover"]
+                    "styles": ["simple_rgb", "bare_soil", "phot_veg", "nphot_veg"]
                 }, 
                 # Include an additional list of utc dates in the WMS Get Feature Info
                 # HACK: only used for GSKY non-solar day lookup
@@ -534,6 +539,112 @@ layer_cfg = [
                         ],
                         "scale_range": [0.0, 111.0]
                     },
+                ],
+                # Default style (if request does not specify style)
+                # MUST be defined in the styles list above.
+
+                # (Looks like Terria assumes this is the first style in the list, but this is
+                #  not required by the standard.)
+                "default_style": "simple_rgb",
+
+                # Attribution.  This entire section is optional.  If not provided, the default attribution
+                #               from the parent platform or the service config is used.
+                #               If no attribution is defined at any level, no attribution will be published.
+                "attribution": {
+                    # Attribution must contain at least one of ("title", "url" and "logo")
+                    # A human readable title for the attribution - e.g. the name of the attributed organisation
+                    "title": "GEOGLAM Fractional Cover",
+                    # The associated - e.g. URL for the attributed organisation
+                    "url": "http://www.csiro.au",
+                    # Logo image - e.g. for the attributed organisation
+                    "logo": {
+                        # Image width in pixels (optional)
+                        "width": 73,
+                        # Image height in pixels (optional)
+                        "height": 73,
+                        # URL for the logo image. (required if logo specified)
+                        "url": "https://www.csiro.au/~/media/Web-team/Images/CSIRO_Logo/CSIRO_Logo.png",
+                        # Image MIME type for the logo - should match type referenced in the logo url (required if logo specified.)
+                        "format": "image/png",
+                    }
+                }
+            },
+            {
+                # Included as a keyword  for the layer
+                "label": "total_cover_monthly",
+                # Included as a keyword  for the layer
+                "type": "fractional cover",
+                # Included as a keyword  for the layer
+                "variant": "two bands",
+                # The WMS name for the layer
+                "name": "total_cover",
+                # The Datacube name for the associated data product
+                "product_name": "frac_cover",
+                "bands": {
+                    "phot_veg": [],
+                    "nphot_veg": [],
+                },
+                # Min zoom factor - sets the zoom level where the cutover from indicative polygons
+                # to actual imagery occurs.
+                "min_zoom_factor": 1.0,
+                "max_datasets_wms": 12,
+                "max_datasets_wcs": 16,
+                # The fill-colour of the indicative polygons when zoomed out.
+                # Triplets (rgb) or quadruplets (rgba) of integers 0-255.
+                "zoomed_out_fill_colour": [150, 180, 200, 160],
+                "extent_mask_func": lambda data, band: data[band] != data[band].attrs['nodata'],
+                # Fuse func
+                # Determines how multiple dataset arrays are compressed into a single time array
+                # All the formats described above for "extent_mask_func" are supported here as well.
+                #"fuse_func": None,
+                # PQ Fuse func
+                # Determines how multiple dataset arrays are compressed into a single time array for the PQ layer
+                # All the formats described above for "extent_mask_func" are supported here as well.
+                #"pq_fuse_func": None,
+                # PQ Ignore time
+                # Doesn't use the time from the data to find a corresponding mask layer
+                # Used when you have a mask layer that doesn't have time
+                "pq_ignore_time": False,
+                # Flags listed here are ignored in GetFeatureInfo requests.
+                # (defaults to empty list)
+                "ignore_info_flags": [],
+                "legend": {
+                    "styles": ["tot_cover"]
+                }, 
+                # Include an additional list of utc dates in the WMS Get Feature Info
+                # HACK: only used for GSKY non-solar day lookup
+                "feature_info_include_utc_dates": False,
+                # Set to true if the band product dataset extents include nodata regions.
+                "data_manual_merge": False,
+                # Set to true if the pq product dataset extents include nodata regions.
+                # "pq_manual_merge": False,
+                # Bands to always fetch from the Datacube, even if it is not used by the active style.
+                # Useful for when a particular band is always needed for the extent_mask_func,
+                "always_fetch_bands": [ ],
+                # Apply corrections for solar angle, for "Level 1" products.
+                # (Defaults to false - should not be used for NBAR/NBAR-T or other Analysis Ready products
+                "apply_solar_corrections": False,
+                # If this value is set then WCS works exclusively with the configured
+                # date and advertises no time dimension in GetCapabilities.
+                # Intended mostly for WCS debugging.
+                # "wcs_sole_time": "2017-01-01",
+                # The default bands for a WCS request.
+                # 1. Must be provided if WCS is activated.
+                # 2. Must contain at least one band.
+                # 3. All bands must exist
+                # 4. Bands may be referred to by either native name or alias
+                "wcs_default_bands": ["phot_veg", "nphot_veg" ],
+                # The "native" CRS for WCS.
+                # Can be omitted if the product has a single native CRS, as this will be used in preference.
+                "native_wcs_crs": "EPSG:3577",
+                # The resolution (x,y) for WCS.
+                # This is the number of CRS units (e.g. degrees, metres) per pixel in the horizontal and vertical
+                # directions for the native resolution.  E.g. for a EPSG:3577  (25.0,25.0) for Landsat-8 and (10.0,10.0 for Sentinel-2)
+                "native_wcs_resolution": [ 500.0, 500.0 ],
+                # FeatureListURLs and DataURLs are optional.
+                "styles": [
+                    # Examples of styles which are linear combinations of the available spectral bands.
+                    #
                     {
                         "name": "tot_cover",
                         "title": "Total Cover",
@@ -609,38 +720,10 @@ layer_cfg = [
                         ],
                         "scale_range": [0.0, 110.0]
                     },
-                ],
-                # Default style (if request does not specify style)
-                # MUST be defined in the styles list above.
-
-                # (Looks like Terria assumes this is the first style in the list, but this is
-                #  not required by the standard.)
-                "default_style": "simple_rgb",
-
-                # Attribution.  This entire section is optional.  If not provided, the default attribution
-                #               from the parent platform or the service config is used.
-                #               If no attribution is defined at any level, no attribution will be published.
-                "attribution": {
-                    # Attribution must contain at least one of ("title", "url" and "logo")
-                    # A human readable title for the attribution - e.g. the name of the attributed organisation
-                    "title": "GEOGLAM Fractional Cover",
-                    # The associated - e.g. URL for the attributed organisation
-                    "url": "http://www.csiro.au",
-                    # Logo image - e.g. for the attributed organisation
-                    "logo": {
-                        # Image width in pixels (optional)
-                        "width": 73,
-                        # Image height in pixels (optional)
-                        "height": 73,
-                        # URL for the logo image. (required if logo specified)
-                        "url": "https://www.csiro.au/~/media/Web-team/Images/CSIRO_Logo/CSIRO_Logo.png",
-                        # Image MIME type for the logo - should match type referenced in the logo url (required if logo specified.)
-                        "format": "image/png",
-                    }
-                }
-            },
+                ]   
+            }
         ],
-    }
+    },
 ]
 
 
