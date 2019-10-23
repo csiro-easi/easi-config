@@ -1,1 +1,28 @@
-Mats stuff goes here
+{
+  "homeCamera": {
+    "north": -8,
+    "east": 158,
+    "south": -45,
+    "west": 109
+  },
+  "catalog": [
+    {
+      "name": "Fractional Cover",
+      "type": "group",
+      "items": [
+        {
+          "name": "Fractional Cover three bands fractional cover (frac_cover_monthly)",
+          "type": "wms",
+          "url": "https://ows.easi-eo.solutions/",
+          "layers": "frac_cover"
+        },
+        {
+          "name": "Fractional Cover two bands fractional cover (total_cover_monthly)",
+          "type": "wms",
+          "url": "https://ows.easi-eo.solutions/",
+          "layers": "total_cover"
+        }
+      ]
+    }
+  ]
+}
