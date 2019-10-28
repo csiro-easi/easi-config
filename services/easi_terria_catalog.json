@@ -11,13 +11,13 @@
       "type": "group",
       "items": [
         {
-          "name": "Fractional Cover three bands fractional cover (frac_cover_monthly)",
+          "name": "Vegetation green, non-green and bare ground (three-band monthly)",
           "type": "wms",
           "url": "https://ows.easi-eo.solutions/",
           "layers": "frac_cover"
         },
         {
-          "name": "Fractional Cover two bands fractional cover (total_cover_monthly)",
+          "name": "Total cover (vegetation and bare ground, two-band monthly)",
           "type": "wms",
           "url": "https://ows.easi-eo.solutions/",
           "layers": "total_cover"
