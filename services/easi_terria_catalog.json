@@ -1,1 +1,28 @@
-Mats stuff goes here
+{
+  "homeCamera": {
+    "north": -8,
+    "east": 158,
+    "south": -45,
+    "west": 109
+  },
+  "catalog": [
+    {
+      "name": "Fractional Cover",
+      "type": "group",
+      "items": [
+        {
+          "name": "Vegetation green, non-green and bare ground (three-band monthly)",
+          "type": "wms",
+          "url": "https://ows.easi-eo.solutions/",
+          "layers": "frac_cover"
+        },
+        {
+          "name": "Total cover (vegetation and bare ground, two-band monthly)",
+          "type": "wms",
+          "url": "https://ows.easi-eo.solutions/",
+          "layers": "total_cover"
+        }
+      ]
+    }
+  ]
+}
