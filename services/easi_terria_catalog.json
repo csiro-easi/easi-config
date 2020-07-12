@@ -13,14 +13,14 @@
         {
           "name": "Vegetation green, non-green and bare ground (three-band monthly)",
           "type": "wms",
-          "url": "https://ows.easi-eo.solutions/",
-          "layers": "frac_cover"
-        },
-        {
-          "name": "Total cover (vegetation and bare ground, two-band monthly)",
-          "type": "wms",
-          "url": "https://ows.easi-eo.solutions/",
-          "layers": "total_cover"
+          "url": "https://ows.stage.easi-eo.solutions/",
+          "layers": "csiro_modis_frac_cover"
+        // },
+        // {
+        //   "name": "Total cover (vegetation and bare ground, two-band monthly)",
+        //   "type": "wms",
+        //   "url": "https://ows.easi-eo.solutions/",
+        //   "layers": "total_cover"
         }
       ]
     }
