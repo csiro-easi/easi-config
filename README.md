@@ -1,3 +1,8 @@
+> This repository is no longer maintained here.
+> Further development occurs in https://dev.azure.com/csiro-easi/easi-hub.
+
+----
+
 # EASI Hub Config
 Config files for EASI Hub datacube and associated applications
 
